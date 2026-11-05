@@ -1,4 +1,4 @@
-# EC1801-DLC-EXP1
+<img width="771" height="547" alt="DLC-EXPT-1" src="https://github.com/user-attachments/assets/861c8d31-a8c9-4c6a-ae65-3237e3c6af4b" /># EC1801-DLC-EXP1
 ### EXPERIMENT 1 
 ### MINIMIZATION AND IMPLEMENTATION OF BOOLEAN FUNCTION
 ## Aim
@@ -17,15 +17,94 @@ The function is implemented using Verilog HDL.
 File	Description
 exp1_boolean_min.v	Verilog design file
 exp1_boolean_min_tb.v	Verilog testbench
-exp1_boolean_min.vcd	VCD waveform dump generated during simulation
-
-## Verilog Program
-
+exp1_boolean_min.vcd	VCD waveform dump generated during 
+## Boolean 
+module boolean(
+input A,
+input B,
+input C,
+input D,
+output F);
+assign F=(~B & ~D) | (B &D) ;
+end module
 
 
 ## TestBench Program
 
+module tb;
 
+reg A;
+reg B;
+reg C;
+reg D;
+
+wire F;
+
+boolean dut (
+    .A(A),
+    .B(B),
+    .C(C),
+    .D(D),
+    .F(F)
+);
+
+initial begin
+
+    $dumpfile("boolean.vcd");
+    $dumpvars(0, tb);
+
+    A=0; B=0; C=0; D=0; #10
+    $display("A=%b B=%b C=%b D=%b F=%b", A,B,C,D,F);
+
+    A=0; B=0; C=0; D=1; #10
+    $display("A=%b B=%b C=%b D=%b F=%b", A,B,C,D,F);
+
+    A=0; B=0; C=1; D=0; #10
+    $display("A=%b B=%b C=%b D=%b F=%b", A,B,C,D,F);
+
+    A=0; B=0; C=1; D=1; #10
+    $display("A=%b B=%b C=%b D=%b F=%b", A,B,C,D,F);
+
+    A=0; B=1; C=0; D=0; #10
+    $display("A=%b B=%b C=%b D=%b F=%b", A,B,C,D,F);
+
+    A=0; B=1; C=0; D=1; #10
+    $display("A=%b B=%b C=%b D=%b F=%b", A,B,C,D,F);
+
+    A=0; B=1; C=1; D=0; #10
+    $display("A=%b B=%b C=%b D=%b F=%b", A,B,C,D,F);
+
+    A=0; B=1; C=1; D=1; #10
+    $display("A=%b B=%b C=%b D=%b F=%b", A,B,C,D,F);
+
+    A=1; B=0; C=0; D=0; #10
+    $display("A=%b B=%b C=%b D=%b F=%b", A,B,C,D,F);
+
+    A=1; B=0; C=0; D=1; #10
+    $display("A=%b B=%b C=%b D=%b F=%b", A,B,C,D,F);
+
+    A=1; B=0; C=1; D=0; #10
+    $display("A=%b B=%b C=%b D=%b F=%b", A,B,C,D,F);
+
+    A=1; B=0; C=1; D=1; #10
+    $display("A=%b B=%b C=%b D=%b F=%b", A,B,C,D,F);
+
+    A=1; B=1; C=0; D=0; #10
+    $display("A=%b B=%b C=%b D=%b F=%b", A,B,C,D,F);
+
+    A=1; B=1; C=0; D=1; #10
+    $display("A=%b B=%b C=%b D=%b F=%b", A,B,C,D,F);
+
+    A=1; B=1; C=1; D=0; #10
+    $display("A=%b B=%b C=%b D=%b F=%b", A,B,C,D,F);
+
+    A=1; B=1; C=1; D=1; #10
+    $display("A=%b B=%b C=%b D=%b F=%b", A,B,C,D,F);
+
+    $finish;
+end
+
+endmodule
 
 
 
@@ -85,6 +164,7 @@ and successfully implemented using Verilog HDL.
 
 ## OUTPUT
 
+<img width="1080" height="576" alt="IMG-20261105-WA0005" src="https://github.com/user-attachments/assets/47088b27-b676-49c6-b095-60eb8f11380a" />
 
 
 The design was compiled and simulated using Synopsys VCS, and the functionality was verified using DVE waveform analysis.
